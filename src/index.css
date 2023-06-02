@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(../img/fondoRyM.png);
+  /* background-color: black; */
+  background-size: cover;
+  /* object-fit: cover; */
+  color: white;
 }
 
 code {
