@@ -13,6 +13,7 @@ function Detail() {
         if (data.name) {
           setCharacter(data);
         } else {
+          // eslint-disable-next-line no-alert
           window.alert('No hay personajes con ese ID');
         }
         // eslint-disable-next-line comma-dangle
