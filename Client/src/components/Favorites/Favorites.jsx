@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import Card from "../Card/Card";
-import {
-  ContainerCards,
-  ContainerFilters,
-  Select,
-} from "../Favorites/StyledFavorites";
-import { filterCards, orderCards } from "../../redux/actions";
+import { useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import Card from '../Card/Card';
+import { ContainerCards, ContainerFilters, Select } from './StyledFavorites';
+import { filterCards, orderCards } from '../../redux/actions';
 
-const Favorites = (props) => {
+function Favorites(props) {
   const { myFavorites } = props;
   const dispatch = useDispatch();
   const [aux, setAux] = useState(false);
@@ -38,29 +34,25 @@ const Favorites = (props) => {
         </Select>
       </ContainerFilters>
       <ContainerCards>
-        {myFavorites.map((char) => {
-          return (
-            <Card
-              key={char.id}
-              id={char.id}
-              name={char.name}
-              status={char.status}
-              species={char.species}
-              gender={char.gender}
-              origin={char.origin.name}
-              image={char.image}
-            />
-          );
-        })}
+        {myFavorites.map((char) => (
+          <Card
+            key={char.id}
+            id={char.id}
+            name={char.name}
+            status={char.status}
+            species={char.species}
+            gender={char.gender}
+            origin={char.origin.name}
+            image={char.image}
+          />
+        ))}
       </ContainerCards>
     </div>
   );
-};
+}
 
-const mapStateToProps = (state) => {
-  return {
-    myFavorites: state.myFavorites,
-  };
-};
+const mapStateToProps = (state) => ({
+  myFavorites: state.myFavorites,
+});
 
 export default connect(mapStateToProps, null)(Favorites);

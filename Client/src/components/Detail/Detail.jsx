@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { ContainerDetail, Image, Title1 } from "../Detail/StyledDetail";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { ContainerDetail, Image, Title1 } from './StyledDetail';
 
-const Detail = () => {
+function Detail() {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
 
@@ -13,8 +13,9 @@ const Detail = () => {
         if (data.name) {
           setCharacter(data);
         } else {
-          window.alert("No hay personajes con ese ID");
+          window.alert('No hay personajes con ese ID');
         }
+        // eslint-disable-next-line comma-dangle
       }
     );
     return setCharacter({});
@@ -32,6 +33,6 @@ const Detail = () => {
       <Image src={character.image} alt="char detail" />
     </ContainerDetail>
   );
-};
+}
 
 export default Detail;

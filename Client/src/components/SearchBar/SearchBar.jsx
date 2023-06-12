@@ -1,9 +1,9 @@
-import { ContainerSearchBar, Input, Button } from "./StyledSearchBar";
-import { useState } from "react";
+import { useState } from 'react';
+import { ContainerSearchBar, Input, Button } from './StyledSearchBar';
 
 export default function SearchBar(props) {
   const { onSearch } = props;
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
 
   const handleChange = (e) => {
     setId(e.target.value);

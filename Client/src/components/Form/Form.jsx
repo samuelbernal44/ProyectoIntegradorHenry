@@ -1,12 +1,14 @@
-import { useState } from "react";
-import validator from "./validation";
-import { ContainerForm, Input, Button } from "./StyledForm";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-nested-ternary */
+import { useState } from 'react';
+import validator from './validation';
+import { ContainerForm, Input, Button } from './StyledForm';
 
 function Form(props) {
   const { login } = props;
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [errors, setErrors] = useState({});
 

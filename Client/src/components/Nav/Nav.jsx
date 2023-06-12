@@ -1,18 +1,18 @@
-import SearchBar from "../SearchBar/SearchBar";
-import { ContainerNav, Button } from "../Nav/StyledNav";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
+import { ContainerNav, Button } from './StyledNav';
 
 export default function Nav(props) {
   const { onSearch } = props;
   return (
     <ContainerNav>
-      <Link to={"/home"}>
+      <Link to="/home">
         <Button>Home</Button>
       </Link>
-      <Link to={"/favorites"}>
+      <Link to="/favorites">
         <Button>Favorites</Button>
       </Link>
-      <Link to={"/about"}>
+      <Link to="/about">
         <Button>About</Button>
       </Link>
       <SearchBar onSearch={onSearch} />
