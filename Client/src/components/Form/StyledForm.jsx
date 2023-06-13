@@ -7,7 +7,7 @@ export const ContainerForm = styled.div`
   justify-content: center;
   padding: 40px;
   box-shadow: 0 0 10px white;
-  margin: 1em;
+  margin: 10% auto;
   border-radius: 15px;
   background: linear-gradient(
     0deg,
