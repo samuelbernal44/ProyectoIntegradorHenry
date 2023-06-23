@@ -16,14 +16,18 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  const EMAIL = 'samuelbernal44@gmail.com';
-  const PASSWORD = 'Tmc501';
+  // const EMAIL = 'samuelbernal44@gmail.com';
+  // const PASSWORD = 'Tmc501';
 
   function login(userData) {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate('/home');
-    }
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(`${URL}?email=${email}&password=${password}`).then(({ data }) => {
+      // eslint-disable-next-line no-shadow
+      const { access } = data;
+      setAccess(data);
+      access && navigate('/home');
+    });
   }
 
   const onSearch = (id) => {
@@ -41,7 +45,7 @@ function App() {
   };
 
   const onClose = (id) => {
-    setCharacters(characters.filter((char) => char.id !== Number(id)));
+    setCharacters(characters.filter((char) => char.id !== id));
   };
 
   useEffect(() => {
