@@ -16,32 +16,42 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  // const EMAIL = 'samuelbernal44@gmail.com';
-  // const PASSWORD = 'Tmc501';
 
-  function login(userData) {
+  async function login(userData) {
     const { email, password } = userData;
     const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(`${URL}?email=${email}&password=${password}`).then(({ data }) => {
+    try {
+      const { data } = await axios(
+        // eslint-disable-next-line comma-dangle
+        `${URL}?email=${email}&password=${password}`
+      );
       // eslint-disable-next-line no-shadow
       const { access } = data;
       setAccess(data);
       access && navigate('/home');
-    });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   }
 
-  const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          // eslint-disable-next-line no-alert
-          window.alert('¡No hay personajes con este ID!');
-        }
+  const onSearch = async (id) => {
+    try {
+      const data = await axios(
         // eslint-disable-next-line comma-dangle
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      if (data.data.name) {
+        setCharacters((oldChars) => [...oldChars, data.data]);
+      } else {
+        // eslint-disable-next-line no-alert
+        window.alert('¡No hay personajes con este ID!');
       }
-    );
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   const onClose = (id) => {
