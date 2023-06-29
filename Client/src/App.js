@@ -37,13 +37,13 @@ function App() {
 
   const onSearch = async (id) => {
     try {
-      const data = await axios(
+      const { data } = await axios(
         // eslint-disable-next-line comma-dangle
         `http://localhost:3001/rickandmorty/character/${id}`
       );
 
-      if (data.data.name) {
-        setCharacters((oldChars) => [...oldChars, data.data]);
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
       } else {
         // eslint-disable-next-line no-alert
         window.alert('¡No hay personajes con este ID!');
