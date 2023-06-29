@@ -5,6 +5,11 @@ const URL = 'https://rickandmortyapi.com/api/character/';
 async function getCharById(req, res) {
   const { id } = req.params;
   try {
+    if (id > 826) {
+      // Simulate a server error by throwing an error
+      throw new Error('Simulated server error');
+    }
+
     const { data } = await axios(URL + id);
     // eslint-disable-next-line object-curly-newline
     const { name, gender, species, origin, image, status } = data;
