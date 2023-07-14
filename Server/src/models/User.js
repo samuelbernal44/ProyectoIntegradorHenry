@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
+        autoIncrement: true,
       },
       email: {
         type: DataTypes.STRING,
@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
+    // eslint-disable-next-line comma-dangle
     { timestamps: false }
   );
 };
